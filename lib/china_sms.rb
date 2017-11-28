@@ -10,13 +10,14 @@ module ChinaSMS
 
   class ServiceNotProvided < StandardError;end
 
-  attr_reader :username, :password
+  attr_reader :username, :password, :appkey
 
   def use(service, options)
     @service = ChinaSMS::Service.const_get("#{service.to_s.capitalize}")
     @service.const_set("URL", options[:base_uri]) if options[:base_uri]
     @username = options[:username]
     @password = options[:password]
+    @appkey = options[:appkey]
   end
 
   def to(receiver, content, options = {})
@@ -41,7 +42,7 @@ module ChinaSMS
   end
 
   def clear
-    @service = @username = @password = nil
+    @service = @username = @password = @appkey = nil
   end
 
   private
@@ -49,7 +50,8 @@ module ChinaSMS
   def default_options
     {
       username:  @username,
-      password:  @password
+      password:  @password,
+      appkey: @appkey
     }
   end
 
