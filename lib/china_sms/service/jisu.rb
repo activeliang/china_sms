@@ -23,7 +23,8 @@ module ChinaSMS
         {
           success: body['error'] == 0,
           code: body['error'],
-          message: body['msg']
+          message: body['msg'],
+          test: body
         }
       end
     end
