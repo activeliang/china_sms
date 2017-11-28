@@ -10,7 +10,7 @@ module ChinaSMS
       def to(phone, content, options)
         url = URI.parse(URL)
         post = Net::HTTP::Post.new(url.path)
-        post.basic_auth(options[:username], options[:password], options[:appkey])
+        post.basic_auth(options[:username], options[:appkey])
         post.set_form_data({mobile: phone, content: content})
 
         socket = Net::HTTP.new(url.host, url.port)
