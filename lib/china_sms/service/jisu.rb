@@ -11,7 +11,7 @@ module ChinaSMS
         url = URI.parse(URL)
         post = Net::HTTP::Post.new(url.path)
         post.basic_auth(options[:username], options[:password], options[:appkey])
-        post.set_form_data({mobile: phone, content: content}, appkey: options[:appkey]})
+        post.set_form_data({mobile: phone, content: content, appkey: options[:appkey]})
 
         socket = Net::HTTP.new(url.host, url.port)
         # socket.use_ssl = true
