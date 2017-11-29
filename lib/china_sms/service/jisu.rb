@@ -25,7 +25,7 @@ module ChinaSMS
           success: body['error'] == 0,
           code: body['error'],
           message: body['msg'],
-          test:
+          test: body
         }
       end
     end
